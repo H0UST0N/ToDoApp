@@ -1,18 +1,14 @@
-<h1 align="center">
-  <img alt="To Do App" title="To Do App" src="https://user-images.githubusercontent.com/898246/158365135-61b3303f-8f98-47a8-b67b-6837f2509241.jpg" height="150px"/>
+<p align="center">
+  <img alt="To Do App" src="https://user-images.githubusercontent.com/898246/158441167-af8c4b16-afb1-40be-b19d-13ac055b2408.jpg" width="100%">
 </p>
 
-<p style="text-align: center;">
+<p align="center" style="text-align: center;">
   <a href="#-tecnologias">Tecnologias</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
   <a href="#-projeto">Projeto</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
   <a href="#-como-executar">Como executar</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
 </p>
 
 <br>
-
-<p align="center">
-  <img alt="To Do App" src="" width="100%">
-</p>
 
 ## ✨ Tecnologias
 
