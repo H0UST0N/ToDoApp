@@ -1,5 +1,5 @@
 <h1 align="center">
-  <img alt="To Do App" title="To Do App" src="" height="50px"/>
+  <img alt="To Do App" title="To Do App" src="https://user-images.githubusercontent.com/898246/158365135-61b3303f-8f98-47a8-b67b-6837f2509241.jpg" height="150px"/>
 </p>
 
 <p style="text-align: center;">
