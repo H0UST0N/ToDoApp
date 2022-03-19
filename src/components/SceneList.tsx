@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { useState } from 'react';
 import { RefreshControl, SafeAreaView, ScrollView, StyleSheet } from 'react-native';
 import { Chip, List, Searchbar } from 'react-native-paper';
 
@@ -9,22 +10,11 @@ interface IToDos {
     completed: boolean;
 }
 
-const wait = (timeout: number | undefined) => {
-    return new Promise(resolve => setTimeout(resolve, timeout));
-}
+const SceneList: React.FC<{toDos: IToDos[], refreshing: boolean, onRefresh: () => void;}> = ({toDos, refreshing, onRefresh}) => {
 
-const SceneList: React.FC<{toDos: IToDos[]}> = ({toDos}) => {
-
-    const [searchQuery, setSearchQuery] = React.useState('');
+    const [searchQuery, setSearchQuery] = useState('');
 
     const onChangeSearch = (query: string) => setSearchQuery(query);
-
-    const [refreshing, setRefreshing] = React.useState(false);
-
-    const onRefresh = React.useCallback(() => {
-        setRefreshing(true);
-        wait(2000).then(() => setRefreshing(false));
-    }, []);
 
     return (
         <>

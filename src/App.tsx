@@ -1,64 +1,79 @@
-import React, { useEffect } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import SceneList from './components/SceneList';
 import SplashScreen from 'react-native-splash-screen'
 import { Appbar, BottomNavigation } from 'react-native-paper';
+import api from './services';
+import { ActivityIndicator, Alert, StyleSheet, View } from 'react-native';
+import ToDos from './services/ToDos';
+
+interface IToDos {
+  userId: number;
+  id: number;
+  title: string;
+  completed: boolean;
+}
+
+const wait = (timeout: number | undefined) => {
+  return new Promise(resolve => setTimeout(resolve, timeout));
+}
 
 const App = () => {
 
-  useEffect(() => {
-    SplashScreen.hide()
-  })
-
-  const [index, setIndex] = React.useState(0);
-  const [routes] = React.useState([
+  const [index, setIndex] = useState(0);
+  const [dataIsLoaded, setDataIsLoaded] = useState(false);
+  const [routes] = useState([
     { key: 'all', title: 'All', icon: 'text-box-multiple' },
     { key: 'completed', title: 'Completed', icon: 'check-bold' },
     { key: 'incomplete', title: 'Incomplete', icon: 'close-thick' },
   ]);
+  const [toDos, setToDos] = useState<IToDos[]>([]);
+  const [refreshing, setRefreshing] = useState(false);
 
-  const items = [
-    {
-      "userId": 1,
-      "id": 1,
-      "title": "delectus aut autem",
-      "completed": false
-    },
-    {
-      "userId": 1,
-      "id": 2,
-      "title": "quis ut nam facilis et officia qui",
-      "completed": false
-    },
-    {
-      "userId": 1,
-      "id": 3,
-      "title": "fugiat veniam minus",
-      "completed": false
-    },
-    {
-      "userId": 1,
-      "id": 4,
-      "title": "et porro tempora",
-      "completed": true
-    },
-    {
-      "userId": 1,
-      "id": 5,
-      "title": "laboriosam mollitia et enim quasi adipisci quia provident illum",
-      "completed": false
-    },
-    {
-      "userId": 1,
-      "id": 6,
-      "title": "qui ullam ratione quibusdam voluptatem quia omnis",
-      "completed": false
-    }];
+  const onRefresh = useCallback(() => {
+    setRefreshing(true);
+    wait(2000).then(() => setRefreshing(false));
+}, []);
 
-  const All = () => <SceneList toDos={items} />;
+  const fetchData = async () => {
+    setDataIsLoaded(false);
+    const response = await ToDos.get()
+    setToDos(response);
+    setDataIsLoaded(true);
+  }
 
-  const Completed = () => <SceneList toDos={items.filter(item=>item.completed)} />;
+  useEffect(() => {
+    SplashScreen.hide();
+    (async () => {
+      try {
+        await fetchData();
+      } catch (e: any) {
+        Alert.alert(e.message);
+      }
+    })()
+  }, []);
 
-  const Incomplete = () => <SceneList toDos={items.filter(item=>!item.completed)} />;;
+  const onIndexChange = (index: number) => {
+    setDataIsLoaded(false);
+    setIndex(index);
+    setDataIsLoaded(true);
+  }
+  const All = () => dataIsLoaded
+    ? <SceneList toDos={toDos} onRefresh={onRefresh} refreshing={refreshing}/>
+    : <View style={[styles.container, styles.horizontal]}>
+      <ActivityIndicator />
+    </View>;
+
+  const Completed = () => dataIsLoaded
+    ? <SceneList toDos={toDos.filter(item => item.completed)} onRefresh={onRefresh} refreshing={refreshing} />
+    : <View style={[styles.container, styles.horizontal]}>
+      <ActivityIndicator />
+    </View>;
+
+  const Incomplete = () => dataIsLoaded
+    ? <SceneList toDos={toDos.filter(item => !item.completed)} onRefresh={onRefresh} refreshing={refreshing}/>
+    : <View style={[styles.container, styles.horizontal]}>
+      <ActivityIndicator />
+    </View>;
 
   const renderScene = BottomNavigation.SceneMap({
     all: All,
@@ -70,15 +85,26 @@ const App = () => {
     <>
       <Appbar.Header>
         <Appbar.Content title="To Do" />
-        {/* <Appbar.Action icon="door-closed" /> */}
       </Appbar.Header>
       <BottomNavigation
         navigationState={{ index, routes }}
-        onIndexChange={setIndex}
+        onIndexChange={onIndexChange}
         renderScene={renderScene}
       />
     </>
   );
 };
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    justifyContent: "center"
+  },
+  horizontal: {
+    flexDirection: "row",
+    justifyContent: "space-around",
+    padding: 10
+  }
+});
 
 export default App;

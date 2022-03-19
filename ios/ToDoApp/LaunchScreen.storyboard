@@ -16,27 +16,30 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="SplashIcon" adjustsImageSizeForAccessibilityContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="UL4-CR-mhD">
-                                <rect key="frame" x="94" y="294" width="240" height="233"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="SplashIcon" adjustsImageSizeForAccessibilityContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="UL4-CR-mhD">
+                                <rect key="frame" x="0.0" y="44" width="414" height="384"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="UL4-CR-mhD" secondAttribute="height" multiplier="69:64" id="ZAn-GC-bYL"/>
+                                </constraints>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="To Do" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3hF-LJ-si3">
-                                <rect key="frame" x="163" y="535" width="89" height="43"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="To Do" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3hF-LJ-si3">
+                                <rect key="frame" x="163" y="436" width="89" height="43"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="36"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="v 1.0.0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9en-fp-XAu">
-                                <rect key="frame" x="176" y="835" width="62" height="27"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="Bcu-3y-fUS"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="UL4-CR-mhD" firstAttribute="top" secondItem="Bcu-3y-fUS" secondAttribute="top" id="57S-6Y-d5Z"/>
+                            <constraint firstItem="Bcu-3y-fUS" firstAttribute="trailing" secondItem="3hF-LJ-si3" secondAttribute="trailing" constant="162" id="DH7-Zv-60K"/>
+                            <constraint firstItem="UL4-CR-mhD" firstAttribute="trailing" secondItem="Bcu-3y-fUS" secondAttribute="trailing" id="FMj-I9-o9b"/>
+                            <constraint firstItem="Bcu-3y-fUS" firstAttribute="bottom" secondItem="UL4-CR-mhD" secondAttribute="bottom" constant="434" id="Gvc-fU-8L6"/>
+                            <constraint firstItem="3hF-LJ-si3" firstAttribute="leading" secondItem="Bcu-3y-fUS" secondAttribute="leading" constant="163" id="TNG-Y7-bDe"/>
+                            <constraint firstItem="Bcu-3y-fUS" firstAttribute="bottom" secondItem="3hF-LJ-si3" secondAttribute="bottom" constant="383" id="ThA-qd-w86"/>
+                            <constraint firstItem="UL4-CR-mhD" firstAttribute="leading" secondItem="Bcu-3y-fUS" secondAttribute="leading" id="lrC-AF-FrE"/>
+                        </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iYj-Kq-Ea1" userLabel="First Responder" sceneMemberID="firstResponder"/>
