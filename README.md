@@ -1,5 +1,5 @@
 <p align="center">
-  <img alt="To Do App" src="https://user-images.githubusercontent.com/898246/158441167-af8c4b16-afb1-40be-b19d-13ac055b2408.jpg" width="100%">
+  <img alt="To Do App" src="https://user-images.githubusercontent.com/898246/159172871-2beba927-5a13-4ea8-92c2-55f2eaa7cce8.jpg" width="100%">
 </p>
 
 <p align="center" style="text-align: center;">
@@ -30,6 +30,7 @@ No aplicativo você pode:
 
 - Instale o Node.js
 - Instale o Yarn
+- Instale o watchman `brew install watchman`
 - Clone o repositório
 - Instale as dependências com `yarn`
 - Instale as dependências ios dentro da pasta ios com `pod install`
