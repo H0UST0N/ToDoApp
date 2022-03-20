@@ -30,7 +30,7 @@ No aplicativo você pode:
 
 - Instale o Node.js
 - Instale o Yarn
-- Instale o watchman `brew install watchman`
+- Se estiver utilizando MacOS Instale o watchman `brew install watchman`
 - Clone o repositório
 - Instale as dependências com `yarn`
 - Instale as dependências ios dentro da pasta ios com `pod install`
