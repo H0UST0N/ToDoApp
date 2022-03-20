@@ -6,27 +6,27 @@ import GenericDAO from "../GenericDAO";
 
  const route = 'todos';
  
- export interface IGetToDos {
+ export interface IGetToDo {
     userId: number;
     id: number;
     title: string;
     completed: boolean;
   }
  
- export interface IPostLoginTypes {
+ export interface IPostToDo {
     userId: number;
     id?: number;
     title: string;
     completed: boolean;
  }
  
- const get = async (): Promise<IGetToDos[]> => GenericDAO.get(route);
+ const get = async (): Promise<IGetToDo[]> => GenericDAO.get(route);
  
- const getById = async (id: number): Promise<IGetToDos> => GenericDAO.get(route, id);
+ const getById = async (id: number): Promise<IGetToDo> => GenericDAO.get(route, id);
  
- const save = async (data: IPostLoginTypes) => GenericDAO.save(route, data);
+ const save = async (data: IPostToDo) => GenericDAO.save(route, data);
  
- const edit = async (data: IPostLoginTypes | any, id: number) => GenericDAO.save(route, data, id);
+ const edit = async (data: IPostToDo | any, id: number) => GenericDAO.save(route, data, id);
  
  export default {
    get,

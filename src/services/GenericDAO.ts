@@ -32,7 +32,7 @@ const get = async (
       const statusCode = e.response?.status;
 
       if (statusCode?.toString().startsWith('4'))
-        Alert.alert('Tente logar novamente');
+        Alert.alert('Verifique os dados e tente novamente.');
 
       if (statusCode?.toString().startsWith('5'))
       Alert.alert('Servidor indisponível.');
@@ -63,20 +63,10 @@ const save = async (
         { headers }
       );
     }
-    return response.data;
+    return response;
   } catch (e) {
-    // Erros podem ser do Axios ou outros. Caso sejam erros http 4xx (401, 402, etc)
-    // é gerado um ClientError. Caso sejam erros http 5xx (500, 501, etc) é lançado
-    // um erro ServerError. Caso sejam outros tipos de erros http ou erros de outra natureza,
-    // o erro é relançado para a função que chamou.
     if (axios.isAxiosError(e)) {
-      const statusCode = e.response?.status;
-
-      if (statusCode?.toString().startsWith('4'))
-        Alert.alert('Tente logar novamente');
-
-      if (statusCode?.toString().startsWith('5'))
-      Alert.alert('Servidor indisponível.');
+      return e.response;
     }
   }
 };
